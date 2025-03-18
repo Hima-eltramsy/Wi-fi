@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+}
+h2{
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+body
+{
+        height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui;
+}.title{
+    font-size: 30px;
+}ul{
+    position: relative;
+    left: 30px;
+}
+.reload{
+    padding: 10px;
+    margin-top: 5px;
+    outline: none;
+    border: none;
+    background: #666;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.hide{
+    display: none;
+}
+    </style>
+    <title>Wi-fi</title>
+</head>
+<body>
+    <div class="contianer">
+        <h2 class="title">Offline Now</h2>
+        <ul>
+            <li>No Internet</li>
+            <li>Yes Relod</li>
+            <li>No Wi-fi</li>
+        </ul>
+       <button class="reload">Reload</button>
+    </div>
+    
+    <script>
+        let title = document.querySelector('.title');
+let ul = document.querySelector('ul');
+let reload = document.querySelector('.reload');
+
+window.onload = function(){
+    if(window.navigator.online){
+        online()
+    }else{
+        offline()
+    }
+}
+window.addEventListener('online' , function(){
+    online()
+})
+window.addEventListener('offline' , function(){
+    offline()
+})
+
+reload.onclick = function(){
+    window.location.reload()
+}
+
+function online() {
+    title.innerHTML = 'Online Now';
+    title.style.color = 'green';
+    ul.classList.add('hide');
+    reload.classList.add('hide');
+}
+
+function offline() {
+    title.innerHTML = 'Offline Now';
+    title.style.color = '#666';
+    ul.classList.remove('hide');
+    reload.classList.remove('hide');
+}
+    </script>
+</body>
+</html>
